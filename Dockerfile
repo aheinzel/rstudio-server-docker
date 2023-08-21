@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 RUN apt-get update && \
-   DEBIAN_FRONTEND=noninteractive apt-get -y install r-base curl gdebi-core
+   DEBIAN_FRONTEND=noninteractive apt-get -y install r-base curl gdebi-core git
 
 
 RUN curl -L "https://s3.amazonaws.com/rstudio-ide-build/server/jammy/amd64/rstudio-server-2022.07.3-586-amd64.deb" > /tmp/rstudio-sever.deb && \
