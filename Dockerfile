@@ -1,10 +1,14 @@
 FROM ubuntu:22.04
 
+
+ARG rstudio_server_deb_url
+
+
 RUN apt-get update && \
    DEBIAN_FRONTEND=noninteractive apt-get -y install r-base curl gdebi-core git
 
 
-RUN curl -L "https://s3.amazonaws.com/rstudio-ide-build/server/jammy/amd64/rstudio-server-2022.07.3-586-amd64.deb" > /tmp/rstudio-sever.deb && \
+RUN curl -L "$rstudio_server_deb_url" > /tmp/rstudio-sever.deb && \
    (\
       dpkg -i /tmp/rstudio-sever.deb && \
       rm /tmp/rstudio-sever.deb \
