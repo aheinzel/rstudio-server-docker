@@ -5,7 +5,18 @@ ARG rstudio_server_deb_url
 
 
 RUN apt-get update && \
-   DEBIAN_FRONTEND=noninteractive apt-get -y install r-base curl gdebi-core git
+   DEBIAN_FRONTEND=noninteractive apt-get -y install r-base curl gdebi-core locales git
+
+
+RUN locale-gen "en_US.UTF-8"
+
+
+ENV LANG=en_US.UTF-8
+
+ENV LANGUAGE=en_US:en
+
+ENV    LC_ALL=en_US.UTF
+
 
 
 RUN curl -L "$rstudio_server_deb_url" > /tmp/rstudio-sever.deb && \
