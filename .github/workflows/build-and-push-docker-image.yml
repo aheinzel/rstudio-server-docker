@@ -1,0 +1,35 @@
+name: Build image with latest rstudio-server daily release and push to dockerhub
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * 6'
+
+jobs:
+  build-with-latest-daily:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find latest rstudio-server daily bulid
+        run: |
+          curl -L "https://dailies.rstudio.com/rstudio/latest/index.json" | jq --raw-output '.products.server.platforms["jammy-amd64"] | "deb=" + .link + "\nchannel=" + .channel + "\nversion=" + .version + "\ntag=" + (.version | gsub("[^A-Za-z0-9]"; "-"))' >> "$GITHUB_ENV"
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Login to doker hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{secrets.DOCKERHUB_USER}}
+          password: ${{secrets.DOCKERHUB_TOKEN}}
+      - name: Build rstudio-server docker image
+        uses: docker/build-push-action@v4
+        with:
+          build-args: |
+            rstudio_server_deb_url=${{env.deb}}
+          push: true
+          labels: |
+            rstudio-server.target-platform=jammy-amd64
+            rstudio-server.channel=${{env.channel}}
+            rstudio-server.version=${{env.version}}
+          tags: |
+            ${{secrets.DOCKERHUB_USER}}/rstudio-server:latest
+            ${{secrets.DOCKERHUB_USER}}/rstudio-server:latest-daily
+            ${{secrets.DOCKERHUB_USER}}/rstudio-server:${{env.tag}}
