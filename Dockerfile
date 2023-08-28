@@ -31,6 +31,11 @@ log-level=info\n\
 logger-type=stderr\n\
 ' > /etc/rstudio/logging.conf
 
+
 ADD entrypoint.sh /entrypoint.sh
+
+
+EXPOSE 8787
+
 
 ENTRYPOINT ["/entrypoint.sh"]
