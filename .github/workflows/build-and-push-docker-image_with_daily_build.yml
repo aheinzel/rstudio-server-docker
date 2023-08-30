@@ -30,6 +30,5 @@ jobs:
             rstudio-server.channel=${{env.channel}}
             rstudio-server.version=${{env.version}}
           tags: |
-            ${{secrets.DOCKERHUB_USER}}/rstudio-server:latest
             ${{secrets.DOCKERHUB_USER}}/rstudio-server:latest-daily
             ${{secrets.DOCKERHUB_USER}}/rstudio-server:${{env.tag}}
