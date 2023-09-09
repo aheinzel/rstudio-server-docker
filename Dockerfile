@@ -24,8 +24,6 @@ RUN curl -L "$rstudio_server_deb_url" > /tmp/rstudio-sever.deb && \
    dpkg -i /tmp/rstudio-sever.deb && \
    rm /tmp/rstudio-sever.deb
 
-RUN find /var/lib/rstudio-server -mindepth 1 -delete
-
 
 RUN echo '\
 [*]\n\
