@@ -22,6 +22,7 @@ jobs:
       - name: Build rstudio-server docker image
         uses: docker/build-push-action@v4
         with:
+          context: "{{defaultContext}}:docker"
           build-args: |
             rstudio_server_deb_url=${{env.deb}}
           push: true
