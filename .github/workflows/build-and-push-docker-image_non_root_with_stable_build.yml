@@ -3,7 +3,7 @@ name: Build image with rstudio-server stable release 2023.06.2+561 for non-root 
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: [Build image with rstudio-server stable release 2023.06.2+561 and push to dockerhub]
+    workflows: [Build image with rstudio-server stable release 2023.06.2\+561 and push to dockerhub]
     types:
       - completed
 
