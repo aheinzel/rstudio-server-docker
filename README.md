@@ -2,6 +2,7 @@
 
 [![docker image with rstudio-server daily version --> docker hub](https://github.com/aheinzel/rstudio-server-docker/actions/workflows/build-and-push-docker-image_with_daily_build.yml/badge.svg)](https://github.com/aheinzel/rstudio-server-docker/actions/workflows/build-and-push-docker-image_with_daily_build.yml)
 [![docker image with rstudio-server release version --> docker hub](https://github.com/aheinzel/rstudio-server-docker/actions/workflows/build-and-push-docker-image_with_stable_build.yml/badge.svg)](https://github.com/aheinzel/rstudio-server-docker/actions/workflows/build-and-push-docker-image_with_stable_build.yml)
+[![docker image with rstudio-server release version for non root users --> docker hub](https://github.com/aheinzel/rstudio-server-docker/actions/workflows/build-and-push-docker-image_non_root_with_stable_build.yml/badge.svg)](https://github.com/aheinzel/rstudio-server-docker/actions/workflows/build-and-push-docker-image_non_root_with_stable_build.yml)
 
 ## Availability
 Docker images are available from docker hub ([ah3inz3l/rstudio-server](https://hub.docker.com/r/ah3inz3l/rstudio-server)).
