@@ -22,6 +22,12 @@ RUN touch "${AUTH_DIR}/.credential" "${AUTH_DIR}/.salt" && \
 ADD entrypoint.sh /entrypoint.sh
 
 
+#add tidyverse to container
+RUN apt-get update && \
+   apt-get -y install libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libharfbuzz-dev libfribidi-dev libxml2-dev libcurl4-openssl-dev libfontconfig1-dev && 
+   R -e "install.packages('tidyverse')"
+
+
 EXPOSE 8787
 
 

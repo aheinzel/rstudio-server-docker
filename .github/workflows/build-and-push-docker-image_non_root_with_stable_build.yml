@@ -1,9 +1,9 @@
-name: Build image with rstudio-server stable release 2023.06.2+561 for non-root users and push to dockerhub
+name: Build image with rstudio-server stable release 2024.09.1+394 for non-root users and push to dockerhub
 
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: [Build image with rstudio-server stable release 2023.06.2\+561 and push to dockerhub]
+    workflows: [Build image with rstudio-server stable release 2024.09.1\+394 and push to dockerhub]
     types:
       - completed
 
@@ -26,7 +26,7 @@ jobs:
           labels: |
             rstudio-server.target-platform=jammy-amd64
             rstudio-server.channel=release
-            rstudio-server.version=2023.06.2+561
+            rstudio-server.version=2024.09.1+394
           tags: |
             ${{secrets.DOCKERHUB_USER}}/rstudio-server:latest-release-singularity
-            ${{secrets.DOCKERHUB_USER}}/rstudio-server:2023-06-2-561-singularity
+            ${{secrets.DOCKERHUB_USER}}/rstudio-server:2024-09-1-394-singularity
