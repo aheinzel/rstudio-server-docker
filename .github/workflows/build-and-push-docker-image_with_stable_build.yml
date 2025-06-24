@@ -1,4 +1,4 @@
-name: Build image with rstudio-server stable release 2024.09.1+394 and push to dockerhub
+name: Build image with rstudio-server stable release 2025.05.1+513 and push to dockerhub
 
 on:
   workflow_dispatch:
