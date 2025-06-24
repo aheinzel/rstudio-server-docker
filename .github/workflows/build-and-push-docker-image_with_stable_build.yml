@@ -19,17 +19,17 @@ jobs:
         with:
           context: "{{defaultContext}}:docker"
           build-args: |
-            rstudio_server_deb_url=https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2024.09.1-394-amd64.deb
+            rstudio_server_deb_url=https://download2.rstudio.org/server/focal/amd64/rstudio-server-2025.05.1-513-amd64.deb
           push: true
           #load: true #load and push together are not supported
           labels: |
             rstudio-server.target-platform=jammy-amd64
             rstudio-server.channel=release
-            rstudio-server.version=2024.09.1+394
+            rstudio-server.version=2025.05.1+513
           tags: |
             ${{secrets.DOCKERHUB_USER}}/rstudio-server:latest
             ${{secrets.DOCKERHUB_USER}}/rstudio-server:latest-release
-            ${{secrets.DOCKERHUB_USER}}/rstudio-server:2024-09-1-394
+            ${{secrets.DOCKERHUB_USER}}/rstudio-server:2025-05-1-513
       #- name: Inspect
       #  run: |
       #    docker image inspect ${{secrets.DOCKERHUB_USER}}/rstudio-server:latest
