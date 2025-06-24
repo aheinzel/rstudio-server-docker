@@ -65,9 +65,25 @@ USERS
    ah3inz3l/rstudio-server notimeout
 ```
 
+### Run (Single User with Pyxis on Slurm)
+Submit a new job launching rstudio-server in single user mode. Only a single user for rstudio-server is support. Password for rstudio-server must be provided via the environment variable *RPASS* (replace *pass* in the example with a password of your choice). Use your container users' user name with the password provided via *RPASS* to login into rstudio-server. Adapt *XXX* to your environment to bind a local folder into the container as the users home-directory. Server address and listening port will be written to stdout.
+```
+sbatch \
+   --ntasks=1 \
+   -c 4 \
+   --mem=32G \
+   --export="RPASS=pass" \
+   --wrap='srun \
+      --container-image=docker://ah3inz3l/rstudio-server:latest-release-singularity \
+      --no-container-mount-home \
+      --no-container-entrypoint \
+      --container-mounts="./XXX:/root" \
+      /entrypoint.sh \
+   '
+```
+
 ### Run (non-root user)
 Run container with non-root user (singularity without fakeroot and similar). Launches rstudio-server under the non-root user used in the container. Only a single user for rstudio-server is support. Password for rstudio-server must be provided via the environment variable *RPASS* (replace *pass* in the example with a password of your choice). Use your container users' user name with the password provided via *RPASS* to login into rstudio-server. Adapt *XXX* and *CONTAINER-USER* to your environment to bind a local folder into the container as the users home-directory. 
-> :warning: **min UID 1000**: The user used to run services in the container must have a user id greater or equal than 1000.
 ```
 singularity run \
    --contain \
