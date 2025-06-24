@@ -2,7 +2,7 @@ FROM ah3inz3l/rstudio-server
 
 
 RUN apt-get update && \
-   apt-get -y install whois
+   apt-get -y install whois netcat-openbsd
 
 
 RUN chmod 777 /var/lib/rstudio-server && \
@@ -26,9 +26,6 @@ ADD entrypoint.sh /entrypoint.sh
 RUN apt-get update && \
    apt-get -y install libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libharfbuzz-dev libfribidi-dev libxml2-dev libcurl4-openssl-dev libfontconfig1-dev && \
    R -e "install.packages('tidyverse')"
-
-
-EXPOSE 8787
 
 
 ENTRYPOINT ["/entrypoint.sh"]
