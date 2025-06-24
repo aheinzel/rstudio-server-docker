@@ -27,6 +27,7 @@ do
    if ! nc -z localhost ${p}-${p}
    then
       listen_port="${p}"
+      break
    fi
 done
 
