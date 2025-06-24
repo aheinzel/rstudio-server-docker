@@ -17,13 +17,6 @@ then
    exit 1
 fi
 
-if [ "$(id -u "${USER}")" -lt 1000 ]
-then
-   echo "ERROR: current user with a user id less than 1000 is considered a system user and thus not allowed to use rstudio-server" >&2
-   exit 1
-fi
-
-
 
 echo "INFO: running as user ${USER}"
 echo "INFO: use username ${USER} with the password supplied via RPASS to log into rstudio-server"
@@ -37,6 +30,7 @@ echo -n "${RPASS}" | "${AUTH_DIR}/make_credential_string.sh" "${USER}" > "${AUTH
    --auth-stay-signed-in-days=30 \
    --auth-none=0 \
    --auth-validate-user=0 \
+   --auth-minimum-user-id=0 \
    --server-user="${USER}" \
    --auth-pam-helper-path="${AUTH_DIR}/auth.sh" &
 
